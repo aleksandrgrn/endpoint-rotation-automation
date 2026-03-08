@@ -1,0 +1,10 @@
+[Unit]
+Description=Reality autorotate watchdog timer
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Unit=reality-autorotate-watchdog.service
+
+[Install]
+WantedBy=timers.target

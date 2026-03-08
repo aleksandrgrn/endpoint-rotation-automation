@@ -1,0 +1,15 @@
+[Unit]
+Description=Reality autorotate rotate (manual)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# rotate может занимать заметное время (scan + TLS verify + Marzban apply)
+TimeoutStartSec=30min
+TimeoutStopSec=30s
+User=root
+EnvironmentFile=/etc/reality-autorotate.env
+StandardInput=null
+# Do not rely on systemd env var expansion in WorkingDirectory=. Use an explicit shell cd.
+ExecStart=/usr/bin/env bash -lc 'cd "$PROJECT_ROOT" && exec "$PROJECT_ROOT/autorotate/bin/rotate.sh" --trigger manual'

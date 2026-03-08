@@ -1,0 +1,5 @@
+# Python dependencies for execution scripts
+# Install with: pip install -r requirements.txt
+
+# Required for skill_creator scripts (validation)
+PyYAML>=6.0

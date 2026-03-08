@@ -1,0 +1,15 @@
+[Unit]
+Description=Reality autorotate watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# watchdog обычно быстрый, но rotate может быть вызван из него косвенно при пустом state
+TimeoutStartSec=30min
+TimeoutStopSec=30s
+User=root
+EnvironmentFile=/etc/reality-autorotate.env
+StandardInput=null
+# Do not rely on systemd env var expansion in WorkingDirectory=. Use an explicit shell cd.
+ExecStart=/usr/bin/env bash -lc 'cd "$PROJECT_ROOT" && exec "$PROJECT_ROOT/autorotate/bin/watchdog.sh"'

@@ -1,0 +1,6 @@
+# podkop-sub-sync configuration
+#
+# Install to: /etc/podkop-sub-sync.conf (chmod 600)
+#
+# URL must be reachable from the router via HTTPS.
+SUB_URL="https://sub.example.com/sub/REPLACE_ME"
